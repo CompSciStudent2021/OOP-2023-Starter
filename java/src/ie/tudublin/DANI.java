@@ -31,6 +31,10 @@ public class DANI extends PApplet {
 		}
 	}
 
+	public void addFollow(Follow f) {
+		follows.add(f);
+	}
+
 	public void settings() {
 		size(1000, 1000);
 		//fullScreen(SPAN);
@@ -68,12 +72,15 @@ public class DANI extends PApplet {
 
 	public void keyPressed() {
 		if (keyCode == ' ') {
-			words = loadWords();
+			findWord();
 			printModel();
-			String poem = writeSonnet();
-			println(poem);
+			sonnet = writeSonnet();
+			println(sonnet);
 		}
 
+	}
+
+	public void println(String[] poem) {
 	}
 
 	float off = 0;

@@ -1,25 +1,12 @@
 package ie.tudublin;
 
 public class Follow {
-    String word;
-    int count;
+    private String word;
+    private int count;
 
-    public Follow(String word) {
+    public Follow(String word, int count) {
         this.word = word;
-        count = 1;
-    }
-
-    public void render() {
-        System.out.println(word + "\t" + count);
-    }
-
-    public String toString() {
-        return word + "\t" + count;
-    }
-
-    public boolean equals(Object obj) {
-        Follow f = (Follow) obj;
-        return word.equals(f.getWord());
+        this.count = count;
     }
 
     public String getWord() {
@@ -30,8 +17,15 @@ public class Follow {
         return count;
     }
 
-    public void increment() {
-        count++;
+    public void setWord(String word) {
+        this.word = word;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public String toString() {
+        return "Follow [word=" + word + ", count=" + count + "]";
     }
 }
-
