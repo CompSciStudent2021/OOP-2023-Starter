@@ -75,6 +75,12 @@ public class DANI extends PApplet {
 
     }
 
+	public void printModel() {
+		for (int i = 0; i < words.length - 1; i++) {
+			System.out.println(wordsList[i]);
+		}
+	}
+
 
 
 }
