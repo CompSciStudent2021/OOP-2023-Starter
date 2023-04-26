@@ -5,9 +5,11 @@ import processing.core.PApplet;
 
 public class DANI extends PApplet {
 
+	String[] wordsList;
+
     ArrayList<String> words = new ArrayList<String>();
 
-    public void settings() {
+	public void settings() {
         size(1000, 1000);
         //fullScreen(SPAN);
     }
@@ -27,6 +29,20 @@ public class DANI extends PApplet {
         }
 
     }
+
+	//Tried to use another array to count how many times the words are used but ran out of time
+	public int findWord(String s) {
+		loadFile();
+		int count = 0;
+		int[] countArray;
+		for (int i = 0; i < wordsList.length; i++) {
+			if (s.equals(wordsList[i])) {
+				countArray[i]++;
+			}
+		}
+
+		return countArray;
+	}
 
     public void keyPressed() {
 
@@ -57,10 +73,6 @@ public class DANI extends PApplet {
             }
         }
 
-    }
-
-    public boolean findWord(String str) {
-       return false;
     }
 
 

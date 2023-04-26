@@ -28,15 +28,9 @@ public class Word {
         }
 
         public void findFollow(String str) {
-            for (int i = 0; i < follows.size(); i++) {
-                Follow f = follows.get(i);
-                if (f.getWord().equals(str)) {
-                    f.setCount(f.getCount() + 1);
-                    return;
-                }
-            }
-            Follow f = new Follow(str, 1);
-            follows.add(f);
+            DANI dani = new DANI();
+            String[] sonnet = dani.writeSonnet();
+            System.out.println(sonnet);
         }
 		
 }
