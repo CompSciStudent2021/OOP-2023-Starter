@@ -7,7 +7,7 @@ import processing.core.PApplet;
 public class DANI extends PApplet {
 
 	public void loadFile() {
-		loadStrings("filename.txt"); // Load a text file into a String array
+		loadStrings("small.txt"); // Load a text file into a String array
 		split(line, ' '); // Split a string into an array of words
 		w.replaceAll("[^\\w\\s]",""); // Remove punction characters
 		s.toLowerCase() // Convert a string to lower case 
@@ -32,7 +32,7 @@ public class DANI extends PApplet {
 		Word current = copy.get(index);
 		String poem = current.getWord() + " ";
 		int line = 0;
-		while (line < 14) {
+		while (line < 8) {
 			// Find the word
 			current = copy.get(index);
 			poem = poem + current.getWord() + " ";
@@ -45,21 +45,20 @@ public class DANI extends PApplet {
 			String next = f.getWord();
 			// Remove the word from the list
 			copy.remove(current);
-			// Next word
-			Word nextWord = null;
-			for (Word w : copy) {
-				if (w.getWord().equals(next)) {
-					nextWord = w;
-					break;
-				}
-			}
-			if (nextWord == null) {
-				break;
-			}
-			current = nextWord;
-			line++;
+			
 		}
 		return poem;
+	}
+
+	public string findWord() {
+		for (int i = 0; i < sonnet.length - 1; i++) {
+			String word = sonnet[i];
+			String next = sonnet[i + 1];
+			if (word.equals(this.word)) {
+				Follow f = new Follow(next);
+				addFollow(f);
+			}
+		}
 	}
 
 	public void settings() {
