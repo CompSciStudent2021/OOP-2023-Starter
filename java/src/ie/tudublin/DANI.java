@@ -14,40 +14,10 @@ public class DANI extends PApplet {
 	}
 
 	public void printModel() {
-		for (int i = 0; i < words.size(); i++) {
-			Word w = words.get(i);
+		for (int i = 0; i < Word.size(); i++) {
+			Word w = Word.get(i);
 			println(w);
 		}
-	}
-	
-	public string writeSonnet() {
-		// make a copy of the arraylist
-		ArrayList<Word> copy = new ArrayList<Word>();
-		for (Word w : words) {
-			Word c = new Word(w);
-			copy.add(c);
-		}
-		// Generate first word
-		int index = (int) random(copy.size());
-		Word current = copy.get(index);
-		String poem = current.getWord() + " ";
-		int line = 0;
-		while (line < 8) {
-			// Find the word
-			current = copy.get(index);
-			poem = poem + current.getWord() + " ";
-			// Find the next word
-			if (current.getFollows().size() == 0) {
-				break;
-			}
-			index = (int) random(current.getFollows().size());
-			Follow f = current.getFollows().get(index);
-			String next = f.getWord();
-			// Remove the word from the list
-			copy.remove(current);
-			
-		}
-		return poem;
 	}
 
 	public string findWord() {
@@ -70,7 +40,24 @@ public class DANI extends PApplet {
 
     public String[] writeSonnet()
     {
-        return null;
+        String[] sonnet = new String[14];
+		int line = 0;
+		while(line < 14)
+		{
+			// Find the word
+			current = copy.get(index);
+			poem = poem + current.getWord() + " ";
+			// Find the next word
+			if (current.getFollows().size() == 0) {
+				break;
+			}
+			index = (int) random(current.getFollows().size());
+			Follow f = current.getFollows().get(index);
+			String next = f.getWord();
+			// Remove the word from the list
+			copy.remove(current);
+		}
+		return sonnet;
     }
 
 	public void setup() {
@@ -80,6 +67,12 @@ public class DANI extends PApplet {
 	}
 
 	public void keyPressed() {
+		if (keyCode == ' ') {
+			words = loadWords();
+			printModel();
+			String poem = writeSonnet();
+			println(poem);
+		}
 
 	}
 
